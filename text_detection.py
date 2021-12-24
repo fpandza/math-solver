@@ -25,12 +25,25 @@ def get_boxes(image):
     for region in horizontal_regions:
         x_0 = region[0]
         x_1 = region[1]
+
+        if 5 > x_1 - x_0:
+            continue
+
         vertical_regions = separateVertical(reverse_image[:, x_0:x_1])
+
+        max_dy = 0
+        max_dy_y_0 = 0
+        max_dy_y_1 = 0
 
         for region in vertical_regions:
             y_0 = region[0]
             y_1 = region[1]
-            char_crops.append((x_0, x_1, y_0, y_1))
+            if y_1 - y_0 > max_dy:
+                max_dy_y_0 = y_0
+                max_dy_y_1 = y_1
+                max_dy = y_1 - y_0
+
+        char_crops.append((x_0, x_1, max_dy_y_0, max_dy_y_1))
 
     return char_crops
 
