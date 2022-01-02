@@ -36,20 +36,21 @@ def multiply_and_divide(expression_numbers):
     resulting_numbers = expression_numbers.copy()
 
     for i in range(1, len(resulting_numbers), 2):
-
-        if resulting_numbers[i] == 'x':
-            mult_result = float(
-                resulting_numbers[i-1]) * float(resulting_numbers[i+1])
-            resulting_numbers = [*resulting_numbers[:i-1],
-                                 mult_result, *resulting_numbers[i+2:]]
-            return multiply_and_divide(resulting_numbers)
-        elif resulting_numbers[i] == '/':
-            divide_result = float(
-                resulting_numbers[i-1]) / float(resulting_numbers[i+1])
-            resulting_numbers = [*resulting_numbers[:i-1],
-                                 divide_result, *resulting_numbers[i+2:]]
-            return multiply_and_divide(resulting_numbers)
-
+        try:
+            if resulting_numbers[i] == 'x':
+                mult_result = float(
+                    resulting_numbers[i-1]) * float(resulting_numbers[i+1])
+                resulting_numbers = [*resulting_numbers[:i-1],
+                                     mult_result, *resulting_numbers[i+2:]]
+                return multiply_and_divide(resulting_numbers)
+            elif resulting_numbers[i] == '/':
+                divide_result = float(
+                    resulting_numbers[i-1]) / float(resulting_numbers[i+1])
+                resulting_numbers = [*resulting_numbers[:i-1],
+                                     divide_result, *resulting_numbers[i+2:]]
+                return multiply_and_divide(resulting_numbers)
+        except ValueError as e:
+            print(e)
     return resulting_numbers
 
 
@@ -58,19 +59,21 @@ def add_and_subtract(expression_numbers):
     resulting_numbers = expression_numbers.copy()
 
     for i in range(1, len(resulting_numbers), 2):
-        if resulting_numbers[i] == '+':
-            mult_result = float(
-                resulting_numbers[i-1]) + float(resulting_numbers[i+1])
-            resulting_numbers = [*resulting_numbers[:i-1],
-                                 mult_result, *resulting_numbers[i+2:]]
-            return add_and_subtract(resulting_numbers)
-        elif resulting_numbers[i] == '-':
-            divide_result = float(
-                resulting_numbers[i-1]) - float(resulting_numbers[i+1])
-            resulting_numbers = [*resulting_numbers[:i-1],
-                                 divide_result, *resulting_numbers[i+2:]]
-            return add_and_subtract(resulting_numbers)
-
+        try:
+            if resulting_numbers[i] == '+':
+                mult_result = float(
+                    resulting_numbers[i-1]) + float(resulting_numbers[i+1])
+                resulting_numbers = [*resulting_numbers[:i-1],
+                                     mult_result, *resulting_numbers[i+2:]]
+                return add_and_subtract(resulting_numbers)
+            elif resulting_numbers[i] == '-':
+                divide_result = float(
+                    resulting_numbers[i-1]) - float(resulting_numbers[i+1])
+                resulting_numbers = [*resulting_numbers[:i-1],
+                                     divide_result, *resulting_numbers[i+2:]]
+                return add_and_subtract(resulting_numbers)
+        except ValueError as e:
+            print(e)
     return resulting_numbers
 
 

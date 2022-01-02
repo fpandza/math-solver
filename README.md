@@ -8,11 +8,20 @@ It uses a Convolutional Network trained from the following dataset:
 https://www.kaggle.com/xainano/handwrittenmathsymbols
 
 To recreate the training steps, run train.py
+Network was trained on two epochs. Plots folder contains a graph of training/validation accuracy with more epochs. Model starts overfitting very quickly so there is no point in further training.
+
+The dataset is unbalanced, and some classes have very similar training images such as '1' and '/'.
+Base model performance metrics can be found under classification_report.txt
+Poorest performing class is '/' which has fewest training images and an overlap with other classes.
 
 ## Requirements
 Python 3.8
 
 ## Usage
+
+Please use black characters on white background as input. 
+Entire equation should be written in a single horizontal row. Characters must be entirely separated from each other. Ensure there is no vertical line going through two separate characters.
+
 To run the app locally, please execute the following from the root directory:
 
 ```

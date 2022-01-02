@@ -13,9 +13,8 @@ import cv2
 def get_boxes(image):
     grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     (_, blackAndWhiteImage) = cv2.threshold(
-        grayImage, 135, 255, cv2.THRESH_BINARY)
+        grayImage, 115, 255, cv2.THRESH_BINARY)
 
-    H, W = blackAndWhiteImage.shape[:2]
     reverse_image = cv2.bitwise_not(blackAndWhiteImage)
 
     horizontal_regions = separateHorizontal(reverse_image)

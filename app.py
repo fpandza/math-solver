@@ -61,6 +61,6 @@ for img in img_list:
 
 print("Detected equation: ", output_string)
 
-solved_equation = round(solve(output_string), 3)
+solved_equation = round(float(solve(output_string)), 3)
 print('\n###### OUTPUT ######\n')
 print(f'{output_string} = {solved_equation}')
