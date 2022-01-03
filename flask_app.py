@@ -80,7 +80,7 @@ def photomath(img):
 
     try:
         solved_equation = round(float(solve(output_string)), 3)
-    except TypeError:
+    except (TypeError, ValueError):
         solved_equation = 'INVALID INPUT, TRY AGAIN'
 
     flash('\n###### OUTPUT ######\n')

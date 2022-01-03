@@ -49,7 +49,7 @@ def multiply_and_divide(expression_numbers):
                 resulting_numbers = [*resulting_numbers[:i-1],
                                      divide_result, *resulting_numbers[i+2:]]
                 return multiply_and_divide(resulting_numbers)
-        except ValueError as e:
+        except (ValueError, IndexError) as e:
             print(e)
     return resulting_numbers
 
@@ -72,7 +72,7 @@ def add_and_subtract(expression_numbers):
                 resulting_numbers = [*resulting_numbers[:i-1],
                                      divide_result, *resulting_numbers[i+2:]]
                 return add_and_subtract(resulting_numbers)
-        except ValueError as e:
+        except (ValueError, IndexError) as e:
             print(e)
     return resulting_numbers
 
